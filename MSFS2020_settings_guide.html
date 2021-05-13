@@ -1,0 +1,245 @@
+<head>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #dataframe {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #dataframe td, #dataframe th {
+          border: 1px solid rgb(150, 150, 150);
+          padding: 8px;
+        }
+        
+        #dataframe tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #dataframe tr:hover {background-color: #ddd;}
+        
+        #dataframe th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #e2e2e2;
+          color: rgb(0, 0, 0);
+        }
+        </style>
+    </head>
+
+<body>
+    <h1>MSFS2020 Graphic Settings Guide Summary Table</h1>
+    <h3>All content by <a href="https://forums.flightsimulator.com/u/theoriginalbabu/summary">TheOriginalBabu</a></h3>
+    <p>Original post can be found <a href="https://forums.flightsimulator.com/t/how-to-graphics-settings-and-performance-guide-3-16-2021/132407">here</a></p>
+    <p>Parsing and formatting done by <a href="https://forums.flightsimulator.com/u/eguas/summary"></a>. Last edit on 2021-05-13.</p>
+    <table border="1" id="dataframe">
+        <thead>
+          <tr style="text-align: right;">
+            <th></th>
+            <th>setting</th>
+            <th>recommended setting</th>
+            <th>performance impact</th>
+            <th>visual impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>0</th>
+            <td>anti aliasing</td>
+            <td>TAA</td>
+            <td>No impact on CPU performance. Off gives 22.7 FPS FXAA, DLAA gives 22.3 FPS (1.7% reduction) TAA gives 21.6 FPS (5% reduction)</td>
+            <td>New TAA introduced with Update 5 has a larger performance impact - FXAA and DLAA seem to have some severe post processing / coloration issues  Geometry aliasing is visible in motion on Off, FXAA, and DLAA, which is not present in TAA. Running &lt;100 Render Scaling with TAA enabled reconstructs the image to native resolution, netting the performance impact that would come with a lower resolution but the image quality similar to a higher resolution.  I highly reccomend using TAA as it helps denoise Ambient Occlusion and Reflections.</td>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>terrain level of detail</td>
+            <td>100</td>
+            <td>This setting impacts both CPU and GPU performance as it is increased. Under a CPU bottlenecked scenario, 10 at 105 FPS 100 at 81 FPS (30% reduction) 200 at 68.5 FPS (53% reduction) Under a GPU bottlenecked scenario, 10 at 24.2 FPS 100 at 22.1 FPS (10% reduction) 200 at 21.4 FPS (13% reduction)</td>
+            <td>Linear quality increase up to 100, but going past 100 leads to lower framerates with smaller visual impact</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>terrain vector data *</td>
+            <td>Ultra* To be tested at a later date. Should control quality of elevation data (e.g. mountains, etc).</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>buildings</td>
+            <td>Medium (low end), Ultra (high end)</td>
+            <td>Under a CPU bottlenecked scenario, Low at 64.5 FPS Medium at 61 FPS (6% reduction) High at 60 FPS (7.5% reduction) Ultra at 59 FPS (9% reduction) Under a GPU bottlenecked scenario, Low at 24.6 FPS Medium at 22.7 FPS (8% reduction) High at 22.4 FPS (10% reduction) Ultra at 21.4 FPS (15% reduction)</td>
+            <td>Main impact on synthesized buildings.  Low has very barebones buildings. Medium adds clutter / objects to buildings. High and Ultra improve the shading on the buildings.</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>trees</td>
+            <td>Low (low end), Medium (high end)</td>
+            <td>No impact on CPU performance  Low ran at 21.3 FPS Medium ran at 19.5 FPS (9% reduction) High ran at 18.5 FPS (15% reduction) Ultra ran at 18 FPS (18% reduction)</td>
+            <td>Higher settings increase draw distance Low has higher contrast appearing on the tree textures, and looks flat / billboard like. Medium makes the trees look significantly more lush and 3D, and somewhat fixes the aforementioned contrast issue. Ultra appears to have slightly higher tree density than Medium.</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>grass and bushes</td>
+            <td>High</td>
+            <td>No impact to CPU performance  Off gave 26 FPS, Low gave 25.3 FPS (3% reduction) Medium gave 25 FPS (4% reduction) High gave 24 FPS (8% reduction) Ultra gave 23 FPS (13% reduction)</td>
+            <td>The density and render distance of the grass changes as the settings increase.</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>objects level of detail</td>
+            <td>100*</td>
+            <td>No major impact to GPU performance  Under a CPU bottlenecked scenario, 10 at 79 FPS 100 at 67 FPS (18% reduction) 200 at 65 FPS (21.5% reduction)</td>
+            <td>This controls the render distance of the LODS of various objects in the world, such as traffic.</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>volumetric clouds</td>
+            <td>Medium (low end), High (mid range), Ultra (High end)</td>
+            <td>No impact to CPU performance. Low ran at 22.7 FPS Medium ran at 21.7 FPS (4.5% reduction) High ran at 20.5 FPS (11% reduction) Ultra ran at 18.4 FPS (23% reduction)</td>
+            <td>Mainly affects cloud resolution (presumably noise texture resolution)  Low looks terrible, whereas medium is where I�d start to call it acceptable. High and Ultra is where the clouds in this sim really shine.</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td>texture resolution</td>
+            <td>Ultra*</td>
+            <td>Setting had no impact to CPU or GPU performance. 6606 MB of VRAM was used when on low. 7192 MB of VRAM was used when on ultra. If you run out VRAM on your GPU, consider lowering this setting.</td>
+            <td>Textures on low are generally blurry and pixelated. Textures on ultra more crisp</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td>anisotropic filtering</td>
+            <td>16x*</td>
+            <td>No impact to CPU performance Off gave 23.7 FPS 4x gave 23.3 FPS (2% reduction) 16x gave 21.9 FPS (8% reduction) Performance impact will lessen with higher GPU memory bandwidth.</td>
+            <td>Removes some of the texture blur caused by mipmapping. Provides noticeable increases to quality up to 16x</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td>texture supersampling</td>
+            <td>4x4</td>
+            <td>No impact on CPU performance. No impact on VRAM usage. Off gave 22.3 FPS 2x2 gave 22.2 FPS (0.05% reduction) 4x4 gave 22 FPS (1% reduction) 8x8 gave 21.4 FPS (4% reduction)</td>
+            <td>Almost impossible to distinguish with AF 16x, main difference with AF off Can result in blurry distant textures when on a lower settings Ground textures at a distance become sharper / clearer / smoother as setting increases</td>
+          </tr>
+          <tr>
+            <th>11</th>
+            <td>texture synthesis</td>
+            <td>Ultra</td>
+            <td>No impact on GPU performance. Under a CPU bottlenecked scenario, Low gave 40 FPS Ultra gave 38 FPS (5% reduction)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>12</th>
+            <td>water waves</td>
+            <td>Medium</td>
+            <td>No impact to CPU performance. Low gave 25.4 FPS Medium gave 24.3 FPS (4.5% reduction) High gave 23.5 FPS  (8% reduction)</td>
+            <td>Low is lower detail but does not look out of place. Medium and High look identical, with higher fidelity waves.</td>
+          </tr>
+          <tr>
+            <th>13</th>
+            <td>shadow maps</td>
+            <td>1536</td>
+            <td>No impact to CPU performance 768 and 1024 gave 25.5 FPS. 1536 gave 25.1 FPS (1.5% reduction) 2048 gave 24.8 FPS (3% reduction).</td>
+            <td>Shadows get crisper the higher resolution they are set to</td>
+          </tr>
+          <tr>
+            <th>14</th>
+            <td>terrain shadows</td>
+            <td>512</td>
+            <td>No impact on CPU performance. Off gave 32 FPS 128 gave 31.3 FPS (2% reduction) 256 gave 31.2 FPS (2.5% reduction) 512 gave 30.9 FPS (3.5% reduction) 1024 gave 29.7 FPS (8% reduction) 2048 gave 27.2 FPS (17.5% reduction)</td>
+            <td>The screenshots were taken at very similar time of day.  The shadow sharpness and therefore accuracy increases as the setting increases.</td>
+          </tr>
+          <tr>
+            <th>15</th>
+            <td>contact shadows</td>
+            <td>Ultra</td>
+            <td>Off gave 27.4 FPS. Low, Medium, High, Ultra gave 26.6 FPS (3% reduction)</td>
+            <td>Trees and grass are get SSRT shadowing when enabled There seems to be less noise at higher settings.</td>
+          </tr>
+          <tr>
+            <th>16</th>
+            <td>windshield effects</td>
+            <td>High</td>
+            <td>No impact on CPU performance. Low gave 22.5 FPS Medium and High, gave 21.4 FPS (5% reduction) Ultra gave 20.5 FPS (10% reduction) with a noticeable increase to quality.</td>
+            <td>Raindrops become more dense and smaller at higher settings. Low seemingly renders no raindrops on windshield. Ultra adds SSRT reflections to windshield.</td>
+          </tr>
+          <tr>
+            <th>17</th>
+            <td>ambient occlusion</td>
+            <td>High</td>
+            <td>No impact on CPU performance. Off gave 27 FPS Low gave 26 FPS (4% reduction) Medium gave 25.5 FPS (6% reduction) High gave 25.2 FPS (7% reduction) Ultra gave 22 FPS (23% reduction)</td>
+            <td>No ambient occlusion is present at off setting. Resolution increases at higher settings. The amount of ambient occlusion increases at higher settings. Ghosting / Artifacting may be present without TAA. Ghosting / Artifacts more severe on lower settings.</td>
+          </tr>
+          <tr>
+            <th>18</th>
+            <td>reflections</td>
+            <td>Ultra</td>
+            <td>No impact to CPU performance Off gave 23.4 FPS Low gave 22.7 FPS (3% reduction) Medium gave 22.5 FPS (4% reduction) High gave 22 FPS (6% reduction) Ultra gave 21.6 FPS (8% reduction)</td>
+            <td>No screen-space reflections are visible when setting is turned off. Reflections artifact at lower settings. Resolution increases with higher settings. Maximum reflection length also increases with higher settings. Reflection resolution / quality scales with rendering resolution.</td>
+          </tr>
+          <tr>
+            <th>19</th>
+            <td>light shafts</td>
+            <td>Ultra</td>
+            <td>No impact to CPU performance Off gave 22.5 FPS Low and Ultra gave 21 FPS (7% reduction)</td>
+            <td>No light rays when turned off. Seemingly an on-off switch, � No difference between low and ultra � This could mean that increasing the setting could have minor effects, such as increasing the max number of light shafts on screen,</td>
+          </tr>
+          <tr>
+            <th>20</th>
+            <td>bloom</td>
+            <td>On</td>
+            <td>Off gave 20.7 FPS On gave  20.5 FPS (1% reduction)</td>
+            <td>Adds a �blur / distortion� effect to exceptionally bright areas � Usually employed when bright areas cannot be displayed in a monitors color display range.</td>
+          </tr>
+          <tr>
+            <th>21</th>
+            <td>depth of field</td>
+            <td>Ultra</td>
+            <td>No impact on CPU performance. Off gave 20.5 FPS Low, Medium, High, Ultra gave 20.3 FPS (1% reduction)</td>
+            <td>Depth of field seems to only be visible in drone camera and in main menu hangar Depth of field is not present when setting is off. Increasing the setting seems to increase the �intensity� of the DOF (dkm, I�m not a camera nerd)</td>
+          </tr>
+          <tr>
+            <th>22</th>
+            <td>motion blur</td>
+            <td>User Preference</td>
+            <td>No effect on CPU performance Off gave an average of 22.85 FPS Ultra gave an average of 22.6 FPS (1% reduction).</td>
+            <td>Intensity of motion blur increases at higher setting</td>
+          </tr>
+          <tr>
+            <th>23</th>
+            <td>lens correction</td>
+            <td>User Preference</td>
+            <td>No visible impact to CPU or GPU performance.</td>
+            <td>Removes fisheye distortion caused by high camera FOV in certain situations.</td>
+          </tr>
+          <tr>
+            <th>24</th>
+            <td>lens flare</td>
+            <td>On</td>
+            <td>No visible impact to CPU or GPU performance</td>
+            <td>Simulates a camera lens artifact when looking at bright objects such as the sun.</td>
+          </tr>
+          <tr>
+            <th>25</th>
+            <td>ai airliners traffic density</td>
+            <td>50</td>
+            <td>This setting mainly impacts CPU performance as it is increased. Likely a higher GPU performance hit at night. Under a CPU bottlenecked scenario, 0 at 42 FPS 25 at 42 FPS 50 at 42 FPS 75 at 41 FPS (2% reduction) 100 at 40 FPS (5% reduction)</td>
+            <td>Increasing this setting increases the amount of AI-controlled airliners in airspace. Screenshots include liveries from Liveries Mega Pack addon</td>
+          </tr>
+          <tr>
+            <th>26</th>
+            <td>airport vehicle density</td>
+            <td>50</td>
+            <td>This setting mainly impacts CPU performance as it is increased. Likely a higher GPU performance hit at night. Under a CPU bottlenecked scenario, 0 at 42 FPS 25 at 41 FPS (2% reduction) 50 at 40 FPS (5% reduction) 75 at 40 FPS (5% reduction) 100 at 40 FPS (5% reduction)</td>
+            <td>Increasing this setting increases the amount of airport vehicles on the ground. Screenshots include liveries from Liveries Mega Pack addon</td>
+          </tr>
+          <tr>
+            <th>27</th>
+            <td>ground aircraft density</td>
+            <td>50</td>
+            <td>This setting impacts both the CPU and GPU performance as it is increased. Likely a higher GPU performance hit at night. Under a CPU bottlenecked scenario, 0 at 37 FPS 25 at 36 FPS (3% reduction) 50 at 32 FPS (11% reduction) 75 at 31 FPS (16% reduction) 100 at 30 FPS (19% reduction) Under a GPU bottlenecked scenario, 0 at 24 FPS 25 at 23 FPS (4% reduction) 50 at 23 FPS (4% reduction) 75 at 23 FPS (4% reduction) 100 at 22 FPS (8% reduction)</td>
+            <td>Increasing this setting increases the amount of airport vehicles on the ground. Screenshots include liveries from Liveries Mega Pack addon</td>
+          </tr>
+        </tbody>
+      </table>
+</body>
