@@ -1,0 +1,1 @@
+# msfs2020_graphics_settings
